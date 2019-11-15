@@ -1,8 +1,8 @@
 {
-  "name": "js-stack",
+  "name": "ts-server",
   "version": "1.0.0",
-  "description": "Boilerplate for a javascript stack, with typescript compiler",
-  "main": "index.js",
+  "description": "Typescript web server boilerplate",
+  "main": "./dist/server.js",
   "scripts": {
     "build": "tsc -p .",
     "start": "node ./dist/server.js",
