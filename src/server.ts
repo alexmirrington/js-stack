@@ -4,7 +4,7 @@ const server: Application = express();
 const port: number = 5000
 
 server.get('/', (req: Request, res: Response, next: NextFunction) => {
-    res.send('Hello, world!');
+    res.send('Hello, TypeScript!');
 })
 
 server.listen(port, () => console.log(`Server running on port ${port}`));
