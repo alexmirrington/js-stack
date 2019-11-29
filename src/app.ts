@@ -1,13 +1,11 @@
-import express, { Application, Request, Response, NextFunction} from 'express';
+import express, { Application, Request, Response } from 'express';
 
-// TODO: Retrieve from .env
-const port: number = 5000;
 const app: Application = express();
 
-app.set('port', port);
+app.set('port', process.env.PORT || 3000);
 
-app.get('/', (req: Request, res: Response, next: NextFunction) => {
+app.get('/', (req: Request, res: Response) => {
     res.send('Hello, TypeScript!');
 });
 
-export default app
+export default app;

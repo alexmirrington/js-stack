@@ -1,15 +1,18 @@
 module.exports = {
+  testEnvironment: 'node',
+  preset: 'ts-jest',
   globals: {
-    "ts-jest": {
-        tsConfig: "tsconfig.json"
+    // Point ts-jest to jsconfig for transpilation.
+    'ts-jest': {
+      tsConfig: 'tsconfig.json'
     }
   },
   transform: {
-    "^.+\\.(ts|tsx)$": "ts-jest"
+    // Regex selects .tsx+ files to be transpiled to .jsx+ before running.
+    '^.+\\.(ts|tsx)$': 'ts-jest'
   },
   testMatch: [
-      "**/test/**/*.test.(ts|js)"
-  ],
-  preset: 'ts-jest',
-  testEnvironment: 'node',
+    // Path query that selects test files to run.
+    '<rootDir>/test/**/*.test.(ts|js)'
+  ]
 };
