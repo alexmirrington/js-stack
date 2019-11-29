@@ -1,10 +1,6 @@
-import express, { Application, Request, Response, NextFunction} from 'express';
+import app from './app';
 
-const server: Application = express();
-const port: number = 5000
+const port = app.get('port')
+const server = app.listen(port, () => console.log(`Server running on port ${port}`));
 
-server.get('/', (req: Request, res: Response, next: NextFunction) => {
-    res.send('Hello, TypeScript!');
-})
-
-server.listen(port, () => console.log(`Server running on port ${port}`));
+export default server;
