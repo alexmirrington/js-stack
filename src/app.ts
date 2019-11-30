@@ -1,4 +1,4 @@
-import express, { Express } from 'express';
+import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import routes from './routes';
@@ -17,17 +17,17 @@ const {
 mongoose.connect(
     `mongodb://${usr}:${pwd}@${host}:${port}/${db}?authSource=admin`,
     { useNewUrlParser: true, useUnifiedTopology: true},
-    (err) => {
+    err => {
         if (err) throw err;
         console.log(`Connected to database ${host}:${port}/${db}`);
     }
-).catch((err) => {
+).catch(err => {
     console.log(`Failed to connect to database ${host}:${port}/${db}`);
     console.error(err);
 });
 
 // Express configuration
-const app: Express = express();
+const app = express();
 app.set('port', process.env.PORT || 3000);
 app.use('/', routes);
 
