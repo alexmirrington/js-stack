@@ -1,10 +1,10 @@
-import express, { Application, Request, Response } from 'express';
+import express, { Express } from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import { MongoError } from 'mongodb';
+import routes from './routes';
 
+// Load environment
 dotenv.config();
-
 const {
     MONGO_USERNAME: usr,
     MONGO_PASSWORD: pwd,
@@ -13,10 +13,11 @@ const {
     MONGO_DATABASE: db
 } = process.env;
 
+// Connect to database
 mongoose.connect(
     `mongodb://${usr}:${pwd}@${host}:${port}/${db}?authSource=admin`,
     { useNewUrlParser: true, useUnifiedTopology: true},
-    (err: MongoError) => {
+    (err) => {
         if (err) throw err;
         console.log(`Connected to database ${host}:${port}/${db}`);
     }
@@ -25,12 +26,9 @@ mongoose.connect(
     console.error(err);
 });
 
-const app: Application = express();
-
+// Express configuration
+const app: Express = express();
 app.set('port', process.env.PORT || 3000);
-
-app.get('/', (req: Request, res: Response) => {
-    res.send('Hello, TypeScript!');
-});
+app.use('/', routes);
 
 export default app;
