@@ -1,7 +1,11 @@
 import express from 'express';
 import * as homeController from '../controllers/home';
+import songRouter from './api/songs';
 
-const routes = express.Router();
-routes.get('/', homeController.index);
+const indexRouter = express.Router();
 
-export default routes;
+indexRouter.get('/', homeController.index);
+
+indexRouter.use('/api/songs', songRouter);
+
+export default indexRouter;

@@ -1,8 +1,8 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
 const SongSchema: Schema = new Schema({
-  name: { type: String, required: true },
-  artist: { type: String, required: true }
+    name: { type: String, required: true },
+    artist: { type: String, required: true }
 });
 
 export interface SongDocument extends Document {
@@ -10,4 +10,5 @@ export interface SongDocument extends Document {
     artist: string;
 }
 
-export default mongoose.model<SongDocument>('Song', SongSchema);
+const Song = mongoose.model<SongDocument>('Song', SongSchema);
+export default Song;

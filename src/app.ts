@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
-import routes from './routes';
+import indexRouter from './routes';
 
 // Setup
 const app = express();
@@ -32,6 +32,7 @@ if (process.env.NODE_ENV !== 'test') {
 
 // Express configuration
 app.set('port', process.env.PORT || 3000);
-app.use('/', routes);
+app.use(express.json())
+app.use('/', indexRouter);
 
 export default app;
