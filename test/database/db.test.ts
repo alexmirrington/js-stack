@@ -16,7 +16,6 @@ describe('Database Song Collection', () => {
         await mongoose.connect(mongoUri, opts, (err) => {
             if (err) console.error(err);
         });
-        console.log('SPIN UP')
         done();
     });
     
@@ -24,11 +23,10 @@ describe('Database Song Collection', () => {
         // Set up Mongo memory database and connect mongoose
         await mongoose.disconnect();
         await mongoServer.stop();
-        console.log('TEARDOWN')
         done();
     });
 
-    it('should contain a song after creatnig one with Mongoose', async () => {
+    it('should contain a song after creating one with Mongoose', async () => {
 
         const data = {
             name: 'Self Destruct',
