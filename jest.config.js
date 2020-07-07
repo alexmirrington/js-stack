@@ -8,8 +8,8 @@ module.exports = {
     }
   },
   transform: {
-    // Regex selects .tsx+ files to be transpiled to .jsx+ before running.
-    '^.+\\.(ts|tsx)$': 'ts-jest'
+    // Regex selects .tsx+ files to be transpiled to .jsx? before running.
+    '^.+\\.tsx?$': 'ts-jest'
   },
   testMatch: [
     // Path query that selects test files to run.

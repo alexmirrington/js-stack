@@ -1,8 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-
-import indexRouter from './routes';
+import indexRouter from './routes'
 
 // Setup
 const app = express();
