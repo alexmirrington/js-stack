@@ -1,3 +1,4 @@
+# Exit if any command fails.
 set -e
 
 # Create non-root user for use by the server.

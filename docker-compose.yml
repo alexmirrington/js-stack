@@ -2,14 +2,14 @@ version: "3"
 services:
   database:
     image: "mongo"
-    container_name: "typescript_mongo"
+    container_name: "typescript-mongo"
     ports:
       - "27017:27017"
     restart: always
     env_file:
       - .env
     volumes:
-      - ./init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh:ro
+      - ./mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh:ro
       - mongo_db:/data/db
       - mongo_configdb:/data/configdb
 volumes:
