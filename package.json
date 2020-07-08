@@ -1,29 +1,30 @@
 {
-  "name": "ts-server",
+  "name": "typescript-server",
   "version": "1.0.0",
-  "description": "Typescript web server boilerplate",
-  "main": "./dist/server.js",
+  "description": "A web server boilerplate built on TypeScript and MongoDB.",
+  "main": "dist/server.js",
   "private": true,
   "scripts": {
     "build": "tsc",
-    "start": "node ./dist/server.js",
-    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
-    "watch": "concurrently -k -p \"[{name}]\" -n \"Typescript,Node\" -c \"cyan.bold,green.bold\" \"npm run build:watch\" \"npm run start:watch\"",
+    "start": "node dist/server.js",
+    "test": "jest --coverage --verbose",
+    "dev": "npm run dev:ts",
+    "dev:ts": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
+    "dev:js": "concurrently -k -p \"[{name}]\" -n \"Typescript,Node\" -c \"cyan.bold,green.bold\" \"npm run build:watch\" \"npm run start:watch\"",
     "build:watch": "tsc -w",
     "start:watch": "nodemon dist/server.js",
-    "test": "jest --coverage --verbose",
-    "test:watch": "jest--watch"
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alexmirrington/js-stack.git"
+    "url": "git+https://github.com/alexmirrington/typescript-server.git"
   },
   "author": "Alex Mirrington",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/alexmirrington/js-stack/issues"
+    "url": "https://github.com/alexmirrington/typescript-server/issues"
   },
-  "homepage": "https://github.com/alexmirrington/js-stack#readme",
+  "homepage": "https://github.com/alexmirrington/typescript-server#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
@@ -39,12 +40,24 @@
     "@typescript-eslint/parser": "^2.9.0",
     "concurrently": "^5.0.0",
     "eslint": "^6.7.1",
+    "husky": "^4.2.5",
     "jest": "^25.1.0",
+    "lint-staged": "^10.2.11",
     "mongodb-memory-server": "^6.0.2",
     "nodemon": "^1.19.4",
     "supertest": "^4.0.2",
     "ts-jest": "^24.2.0",
     "ts-node": "^8.10.2",
     "typescript": "^3.7.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ]
   }
 }
