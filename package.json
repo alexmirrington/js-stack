@@ -1,0 +1,63 @@
+{
+  "name": "typescript-server",
+  "version": "1.0.0",
+  "description": "A web server boilerplate built on TypeScript and MongoDB.",
+  "main": "dist/server.js",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "test": "jest --coverage --verbose",
+    "dev": "npm run dev:ts",
+    "dev:ts": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
+    "dev:js": "concurrently -k -p \"[{name}]\" -n \"Typescript,Node\" -c \"cyan.bold,green.bold\" \"npm run build:watch\" \"npm run start:watch\"",
+    "build:watch": "tsc -w",
+    "start:watch": "nodemon dist/server.js",
+    "test:watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexmirrington/typescript-server.git"
+  },
+  "author": "Alex Mirrington",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexmirrington/typescript-server/issues"
+  },
+  "homepage": "https://github.com/alexmirrington/typescript-server#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.13"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.2",
+    "@types/jest": "^24.0.23",
+    "@types/mongoose": "^5.5.32",
+    "@types/node": "^12.12.7",
+    "@types/supertest": "^2.0.8",
+    "@typescript-eslint/eslint-plugin": "^2.9.0",
+    "@typescript-eslint/parser": "^2.9.0",
+    "concurrently": "^5.0.0",
+    "eslint": "^6.7.1",
+    "husky": "^4.2.5",
+    "jest": "^25.1.0",
+    "lint-staged": "^10.2.11",
+    "mongodb-memory-server": "^6.0.2",
+    "nodemon": "^1.19.4",
+    "supertest": "^4.0.2",
+    "ts-jest": "^24.2.0",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.7.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ]
+  }
+}
