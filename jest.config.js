@@ -13,6 +13,7 @@ module.exports = {
   },
   testMatch: [
     // Path query that selects test files to run.
-    '<rootDir>/test/**/*.test.(ts|js)'
-  ]
+    "<rootDir>/tests/**/*.test.(ts|tsx|js|jsx)",
+    "<rootDir>/**/__tests__/*.test.(ts|tsx|js|jsx)",
+  ],
 };

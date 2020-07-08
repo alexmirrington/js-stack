@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import Song from '../../models/song';
 
 
-export const getAll = (req: Request, res: Response): void => {
+export const getAll = (_: Request, res: Response): void => {
     Song.find({}).lean().then(songs => {
         res.json({ songs });
     }).catch(err => {
