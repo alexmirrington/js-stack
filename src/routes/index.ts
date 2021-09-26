@@ -1,8 +1,11 @@
-import express from 'express';
-import songRouter from './api/songs';
+import express from "express";
 
 const indexRouter = express.Router();
 
-indexRouter.use('/api/songs', songRouter);
+indexRouter.get("/", (_, res) => {
+  res.json({
+    message: "Hello, world!",
+  });
+});
 
 export default indexRouter;

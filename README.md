@@ -23,7 +23,3 @@ There are four main `npm` scripts that you should familiarise yourself with:
 `npm run test`:
 
 - Runs all tests with `jest` and outputs a coverage report. Tests can be placed in either a `__tests__` directory inside any level of the `src` folder, or in a separate `tests` directory at the root of the project folder. Tests should be named `*.test.ts` or `*.test.js`.
-
-### MongoDB and Docker
-
-To create a local MongoDB container, simply run `docker-compose up -d`. This will create appropriate volumes for MongoDB data and configuration, as well as make the `mongo-init.sh` script available to the container to seed the database with a non-root user for the application to use.
